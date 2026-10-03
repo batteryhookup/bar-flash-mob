@@ -1,0 +1,990 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="color-scheme" content="dark" />
+<meta name="description" content="Bar Flash Mob — fans sign up with their favorite bands, and when 100 fans cluster in Bucks County, we take over a local bar for a night. Your band. Your bar. One night." />
+<link rel="icon" href="data:," />
+<title>Bar Flash Mob — Your Band. Your Bar. One Night. | Bucks County, PA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700;0,9..40,900;1,9..40,400&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    color-scheme: dark;
+    --bg:#080812;
+    --bg-2:#0e0e1f;
+    --panel:#121226;
+    --panel-2:#171733;
+    --line:rgba(120,180,255,.18);
+    --ink:#f5f3ff;
+    --muted:#b8b6d1;
+    --muted-2:#8f8cb0;
+    --blue:#22c8ff;
+    --blue-deep:#0090ff;
+    --pink:#ff2e7e;
+    --magenta:#e83fd0;
+    --gold:#ffc94d;
+    --green:#3dff9e;
+    --radius:18px;
+    --font-display:"Bebas Neue", "Arial Narrow", sans-serif;
+    --font-body:"DM Sans", system-ui, -apple-system, Segoe UI, sans-serif;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;
+    font-family:var(--font-body);
+    background:
+      radial-gradient(900px 500px at 85% -5%, rgba(232,63,208,.16), transparent 60%),
+      radial-gradient(800px 480px at -10% 10%, rgba(34,200,255,.14), transparent 60%),
+      radial-gradient(700px 600px at 50% 110%, rgba(255,46,126,.10), transparent 60%),
+      var(--bg);
+    color:var(--ink);
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  ::selection{background:var(--pink); color:#fff}
+  a{color:var(--blue)}
+  img,svg{max-width:100%}
+  .wrap{width:min(1120px,100% - 40px); margin-inline:auto}
+  @media (max-width:560px){ .wrap{width:calc(100% - 32px)} }
+
+  /* ---------- top strip ---------- */
+  .topbar{
+    position:sticky; top:0; z-index:50;
+    backdrop-filter:blur(14px);
+    background:rgba(8,8,18,.82);
+    border-bottom:1px solid var(--line);
+  }
+  .topbar-inner{display:flex; align-items:center; justify-content:space-between; gap:16px; padding:10px 0}
+  .brand{display:flex; align-items:center; gap:10px; text-decoration:none; color:var(--ink)}
+  .brand-mark{
+    width:34px; height:34px; border-radius:10px; flex:none;
+    display:grid; place-items:center;
+    background:linear-gradient(135deg, var(--pink), var(--magenta) 55%, var(--blue-deep));
+    box-shadow:0 0 18px rgba(255,46,126,.55), 0 0 10px rgba(34,200,255,.35);
+    font-size:18px;
+  }
+  .brand-name{font-family:var(--font-display); font-size:24px; letter-spacing:.06em; line-height:1; padding-top:3px}
+  .brand-name em{font-style:normal; color:var(--pink); text-shadow:0 0 12px rgba(255,46,126,.8)}
+  .topbar-loc{
+    font-size:12.5px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:var(--muted);
+    display:flex; align-items:center; gap:8px; white-space:nowrap;
+  }
+  .topbar-loc .dot{width:8px; height:8px; border-radius:50%; background:var(--green); box-shadow:0 0 10px var(--green); animation:pulse-dot 2s infinite}
+  @keyframes pulse-dot{0%,100%{opacity:1}50%{opacity:.35}}
+  .topbar-cta{
+    font-family:var(--font-display); letter-spacing:.08em; font-size:17px; padding:7px 16px 4px;
+    border-radius:999px; color:#fff; text-decoration:none; white-space:nowrap;
+    background:linear-gradient(90deg, var(--pink), var(--magenta));
+    box-shadow:0 0 16px rgba(255,46,126,.5);
+  }
+  @media (max-width:640px){
+    .topbar-loc{display:none}
+    .brand-name{font-size:20px; white-space:nowrap}
+    .brand-mark{width:30px; height:30px; font-size:15px}
+    .topbar-cta{font-size:15px; padding:6px 13px 3px}
+  }
+
+  /* ---------- hero ---------- */
+  .hero{padding:44px 0 30px; position:relative; overflow:hidden}
+  .hero-grid{display:grid; grid-template-columns:1.05fr .95fr; gap:44px; align-items:start}
+  @media (max-width:920px){ .hero-grid{grid-template-columns:1fr; gap:30px} }
+  .launch-pill{
+    display:inline-flex; align-items:center; gap:9px;
+    border:1px solid rgba(255,201,77,.45); color:var(--gold);
+    background:rgba(255,201,77,.07);
+    font-size:12.5px; font-weight:800; letter-spacing:.16em; text-transform:uppercase;
+    padding:7px 14px; border-radius:999px; margin-bottom:18px;
+  }
+  h1{
+    font-family:var(--font-display);
+    font-size:clamp(58px, 9.5vw, 108px);
+    line-height:.92; letter-spacing:.015em; margin:0 0 6px; font-weight:400;
+  }
+  h1 .l-blue{display:block; color:var(--blue); text-shadow:0 0 26px rgba(34,200,255,.65), 0 0 60px rgba(34,200,255,.25)}
+  h1 .l-pink{display:block; color:var(--pink); text-shadow:0 0 26px rgba(255,46,126,.7), 0 0 60px rgba(255,46,126,.3)}
+  h1 .l-white{display:block; color:#fff; text-shadow:0 0 22px rgba(255,255,255,.35)}
+  .hero-sub{font-size:clamp(17px,2.4vw,20px); color:var(--muted); max-width:34em; margin:16px 0 8px}
+  .hero-sub strong{color:var(--ink)}
+  .hero-points{display:flex; flex-wrap:wrap; gap:8px 18px; margin:18px 0 4px; padding:0; list-style:none; font-size:14.5px; font-weight:600; color:var(--muted)}
+  .hero-points li{display:flex; gap:7px; align-items:center}
+  .hero-points li::before{content:""; width:7px; height:7px; border-radius:50%; background:var(--blue); box-shadow:0 0 8px var(--blue); flex:none}
+
+  .jukebox-stage{display:flex; align-items:flex-end; gap:18px; margin-top:26px}
+  .jukebox-note{font-size:13.5px; color:var(--muted-2); max-width:220px; padding-bottom:10px}
+  .jukebox-note b{color:var(--muted); display:block; font-size:14px; margin-bottom:2px}
+  @media (max-width:520px){ .jukebox-note{display:none} }
+
+  /* equalizer */
+  .eq{display:flex; align-items:flex-end; gap:4px; height:44px; margin-top:22px}
+  .eq i{width:7px; border-radius:4px 4px 0 0; background:linear-gradient(180deg, var(--blue), var(--magenta), var(--pink)); animation:eq-bounce 1s ease-in-out infinite; box-shadow:0 0 8px rgba(232,63,208,.5)}
+  @keyframes eq-bounce{0%,100%{transform:scaleY(.35)}50%{transform:scaleY(1)}}
+  .eq-label{font-size:11.5px; letter-spacing:.18em; text-transform:uppercase; color:var(--muted-2); font-weight:700; margin-top:6px}
+
+  /* ---------- form card ---------- */
+  .form-card{
+    background:linear-gradient(180deg, var(--panel-2), var(--panel));
+    border:1px solid rgba(255,46,126,.35);
+    border-radius:22px;
+    padding:26px 24px 22px;
+    box-shadow:0 0 0 1px rgba(34,200,255,.12), 0 0 44px rgba(255,46,126,.18), 0 24px 60px rgba(0,0,0,.5);
+    position:relative;
+  }
+  .form-card::before{
+    content:""; position:absolute; inset:-1px; border-radius:22px; pointer-events:none;
+    box-shadow:inset 0 0 0 1px rgba(255,255,255,.05);
+  }
+  .form-card h2{font-family:var(--font-display); font-weight:400; font-size:34px; letter-spacing:.04em; margin:0; line-height:1}
+  .form-card h2 span{color:var(--blue); text-shadow:0 0 14px rgba(34,200,255,.7)}
+  .form-card .form-lede{color:var(--muted); font-size:14.5px; margin:8px 0 18px}
+  .field{margin-bottom:16px}
+  .field label{display:block; font-size:13px; font-weight:800; letter-spacing:.06em; text-transform:uppercase; color:var(--ink); margin-bottom:7px}
+  .field label .opt{color:var(--muted-2); text-transform:none; letter-spacing:0; font-weight:500}
+  .field input[type="tel"], .field input[type="text"]{
+    width:100%; background:#0a0a1c; border:1.5px solid var(--line); border-radius:12px;
+    color:var(--ink); font:inherit; font-size:16.5px; padding:13px 14px; outline:none;
+    transition:border-color .15s, box-shadow .15s;
+  }
+  .field input:focus{border-color:var(--blue); box-shadow:0 0 0 3px rgba(34,200,255,.18), 0 0 18px rgba(34,200,255,.15)}
+  .field input.invalid{border-color:#ff5470; box-shadow:0 0 0 3px rgba(255,84,112,.15)}
+  .field .hint{font-size:12.5px; color:var(--muted-2); margin-top:6px}
+  .field .error{display:none; font-size:13px; color:#ff8fa5; font-weight:600; margin-top:6px}
+  .field .error.show{display:block}
+  .row-2{display:grid; grid-template-columns:1.35fr .85fr; gap:12px}
+  @media (max-width:460px){ .row-2{grid-template-columns:1fr} }
+
+  .band-entry{display:flex; gap:8px}
+  .band-entry input{flex:1}
+  .add-band-btn{
+    flex:none; border:1.5px solid rgba(34,200,255,.5); background:rgba(34,200,255,.08); color:var(--blue);
+    font:inherit; font-weight:800; font-size:14px; border-radius:12px; padding:0 16px; cursor:pointer;
+  }
+  .add-band-btn:hover{background:rgba(34,200,255,.16)}
+  .band-chips{display:flex; flex-wrap:wrap; gap:8px; margin-top:10px; min-height:0}
+  .band-chip{
+    display:inline-flex; align-items:center; gap:7px;
+    background:linear-gradient(90deg, rgba(255,46,126,.18), rgba(232,63,208,.14));
+    border:1px solid rgba(255,46,126,.55); color:#fff;
+    font-size:14px; font-weight:700; padding:6px 8px 6px 13px; border-radius:999px;
+  }
+  .band-chip button{
+    border:0; background:rgba(255,255,255,.14); color:#fff; width:20px; height:20px; border-radius:50%;
+    cursor:pointer; font-size:13px; line-height:1; display:grid; place-items:center; padding:0;
+  }
+  .suggest-label{font-size:12.5px; color:var(--muted-2); margin:12px 0 7px; font-weight:600}
+  .suggest-chips{display:flex; flex-wrap:wrap; gap:7px}
+  .suggest-chips button{
+    border:1px solid var(--line); background:transparent; color:var(--muted);
+    font:inherit; font-size:13px; font-weight:600; padding:5px 12px; border-radius:999px; cursor:pointer;
+  }
+  .suggest-chips button:hover{border-color:var(--blue); color:var(--blue)}
+  .suggest-chips button.used{opacity:.35; pointer-events:none}
+
+  .consent{
+    display:flex; gap:11px; align-items:flex-start;
+    background:rgba(34,200,255,.05); border:1px solid var(--line); border-radius:12px; padding:13px 14px; margin:18px 0;
+  }
+  .consent input{width:20px; height:20px; flex:none; margin:1px 0 0; accent-color:var(--pink); cursor:pointer}
+  .consent label{font-size:13.5px; color:var(--muted); line-height:1.45; cursor:pointer; text-transform:none; letter-spacing:0; font-weight:500; margin:0}
+  .consent label b{color:var(--ink)}
+  .consent-error{display:none; color:#ff8fa5; font-size:13px; font-weight:600; margin:-8px 0 12px}
+  .consent-error.show{display:block}
+  #barError{display:none; color:#ff8fa5; font-size:13px; font-weight:600}
+  #barError.show{display:block}
+
+  .submit-btn{
+    width:100%; border:0; cursor:pointer;
+    font-family:var(--font-display); font-size:27px; letter-spacing:.09em;
+    color:#fff; padding:15px 20px 11px; border-radius:14px;
+    background:linear-gradient(90deg, var(--pink), var(--magenta) 55%, var(--blue-deep));
+    box-shadow:0 0 26px rgba(255,46,126,.45), 0 10px 24px rgba(0,0,0,.4);
+    transition:transform .12s, box-shadow .12s;
+  }
+  .submit-btn:hover{transform:translateY(-1px); box-shadow:0 0 36px rgba(255,46,126,.65), 0 14px 28px rgba(0,0,0,.4)}
+  .submit-btn:active{transform:translateY(1px)}
+  .submit-btn[disabled]{opacity:.6; cursor:wait; transform:none}
+  .form-fineprint{font-size:12px; color:var(--muted-2); text-align:center; margin:12px 4px 0; line-height:1.5}
+
+  .success-state{display:none; text-align:center; padding:14px 4px 6px}
+  .success-state.show{display:block}
+  .success-badge{
+    width:74px; height:74px; margin:0 auto 16px; border-radius:50%;
+    display:grid; place-items:center; font-size:34px;
+    background:radial-gradient(circle at 35% 30%, rgba(61,255,158,.35), rgba(61,255,158,.08));
+    border:2px solid var(--green); box-shadow:0 0 30px rgba(61,255,158,.4);
+  }
+  .success-state h3{font-family:var(--font-display); font-weight:400; font-size:40px; letter-spacing:.03em; margin:0 0 6px; line-height:1}
+  .success-state h3 span{color:var(--green); text-shadow:0 0 16px rgba(61,255,158,.7)}
+  .success-state p{color:var(--muted); margin:0 auto 12px; max-width:30em}
+  .success-summary{
+    background:#0a0a1c; border:1px dashed rgba(61,255,158,.4); border-radius:12px;
+    padding:13px 16px; font-size:14.5px; margin:16px 0; text-align:left;
+  }
+  .success-summary b{color:var(--ink)}
+  .again-btn{
+    border:1.5px solid var(--line); background:transparent; color:var(--muted);
+    font:inherit; font-weight:700; font-size:14px; padding:10px 18px; border-radius:999px; cursor:pointer;
+  }
+  .again-btn:hover{color:var(--ink); border-color:var(--muted)}
+
+  /* ---------- sections ---------- */
+  section{padding:52px 0}
+  .sec-head{max-width:720px; margin-bottom:28px}
+  .sec-kicker{font-size:12.5px; font-weight:800; letter-spacing:.2em; text-transform:uppercase; color:var(--pink); margin:0 0 10px; text-shadow:0 0 12px rgba(255,46,126,.5)}
+  .sec-kicker.blue{color:var(--blue); text-shadow:0 0 12px rgba(34,200,255,.5)}
+  h2.sec-title{font-family:var(--font-display); font-weight:400; font-size:clamp(38px,5.5vw,54px); letter-spacing:.03em; line-height:1; margin:0 0 10px}
+  .sec-sub{color:var(--muted); font-size:16.5px; margin:0}
+
+  /* mob meters */
+  .meters{background:linear-gradient(180deg, rgba(255,255,255,.015), transparent)}
+  .meter-grid{display:grid; grid-template-columns:1fr 1fr; gap:16px}
+  @media (max-width:720px){ .meter-grid{grid-template-columns:1fr} }
+  .meter-card{
+    background:var(--panel); border:1px solid var(--line); border-radius:var(--radius);
+    padding:20px 20px 18px; position:relative; overflow:hidden;
+  }
+  .meter-card.leader{border-color:rgba(255,201,77,.55); box-shadow:0 0 26px rgba(255,201,77,.12)}
+  .leader-tag{
+    position:absolute; top:14px; right:14px;
+    font-size:11px; font-weight:900; letter-spacing:.12em; text-transform:uppercase;
+    color:#1a1200; background:var(--gold); padding:4px 10px; border-radius:999px;
+  }
+  .meter-band{font-family:var(--font-display); font-size:30px; letter-spacing:.04em; line-height:1; margin:0}
+  .meter-genre{font-size:13px; color:var(--muted-2); font-weight:600; margin:3px 0 14px}
+  .meter-track{height:16px; border-radius:999px; background:#0a0a1c; border:1px solid var(--line); overflow:hidden}
+  .meter-fill{
+    height:100%; width:0; border-radius:999px;
+    background:linear-gradient(90deg, var(--blue-deep), var(--blue) 40%, var(--magenta) 75%, var(--pink));
+    box-shadow:0 0 14px rgba(232,63,208,.6);
+    transition:width 1.4s cubic-bezier(.22,1,.36,1);
+  }
+  .meter-stats{display:flex; justify-content:space-between; align-items:baseline; margin-top:10px; font-size:13.5px; color:var(--muted)}
+  .meter-stats .count{font-family:var(--font-display); font-size:24px; color:#fff; letter-spacing:.04em}
+  .meter-stats .count small{font-size:15px; color:var(--muted-2)}
+  .meter-stats .need{font-weight:800; color:var(--blue)}
+  .meter-join{
+    margin-top:13px; width:100%; border:1px solid rgba(255,46,126,.5); background:rgba(255,46,126,.07);
+    color:#ffb9d2; font:inherit; font-weight:800; font-size:14px; padding:10px; border-radius:11px; cursor:pointer;
+  }
+  .meter-join:hover{background:rgba(255,46,126,.16); color:#fff}
+  .meters-note{font-size:13px; color:var(--muted-2); margin-top:16px; max-width:62em}
+  .meters-note b{color:var(--muted)}
+
+  /* steps */
+  .steps-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:14px}
+  @media (max-width:960px){ .steps-grid{grid-template-columns:1fr 1fr} }
+  @media (max-width:540px){ .steps-grid{grid-template-columns:1fr} }
+  .step{
+    background:var(--panel); border:1px solid var(--line); border-radius:var(--radius); padding:22px 20px;
+    position:relative;
+  }
+  .step-num{
+    font-family:var(--font-display); font-size:52px; line-height:.9;
+    color:transparent; -webkit-text-stroke:1.5px var(--blue);
+    text-shadow:0 0 22px rgba(34,200,255,.25); display:block; margin-bottom:12px;
+  }
+  .step:nth-child(2) .step-num{-webkit-text-stroke-color:var(--magenta)}
+  .step:nth-child(3) .step-num{-webkit-text-stroke-color:var(--pink)}
+  .step:nth-child(4) .step-num{-webkit-text-stroke-color:var(--gold)}
+  .step h3{margin:0 0 7px; font-size:18px; font-weight:900}
+  .step p{margin:0; color:var(--muted); font-size:14.5px}
+  .step p b{color:var(--ink)}
+
+  /* bars */
+  .bars-panel{
+    border:1px solid rgba(34,200,255,.35); border-radius:24px;
+    background:
+      radial-gradient(600px 300px at 90% 0%, rgba(34,200,255,.12), transparent 60%),
+      linear-gradient(180deg, var(--panel-2), var(--panel));
+    padding:34px; display:grid; grid-template-columns:1.1fr .9fr; gap:34px;
+    box-shadow:0 0 40px rgba(34,200,255,.08);
+  }
+  @media (max-width:860px){ .bars-panel{grid-template-columns:1fr; padding:26px 22px} }
+  .bars-panel h2{font-family:var(--font-display); font-weight:400; font-size:clamp(36px,5vw,50px); line-height:1; letter-spacing:.02em; margin:0 0 12px}
+  .bars-panel h2 span{color:var(--blue); text-shadow:0 0 16px rgba(34,200,255,.6)}
+  .bars-panel p{color:var(--muted); margin:0 0 14px; font-size:16px}
+  .bars-perks{list-style:none; margin:18px 0 0; padding:0; display:grid; gap:11px}
+  .bars-perks li{display:flex; gap:11px; font-size:15px; color:var(--muted)}
+  .bars-perks li b{color:var(--ink)}
+  .bars-perks .tick{
+    flex:none; width:23px; height:23px; border-radius:50%; display:grid; place-items:center;
+    background:rgba(61,255,158,.12); border:1px solid rgba(61,255,158,.5); color:var(--green); font-size:12px; font-weight:900; margin-top:1px;
+  }
+  .bar-form{background:#0a0a1c; border:1px solid var(--line); border-radius:16px; padding:20px}
+  .bar-form h3{margin:0 0 4px; font-size:17px; font-weight:900}
+  .bar-form p{font-size:13.5px; margin:0 0 14px}
+  .bar-form .field{margin-bottom:12px}
+  .bar-form input{
+    width:100%; background:var(--panel); border:1.5px solid var(--line); border-radius:11px;
+    color:var(--ink); font:inherit; font-size:15.5px; padding:11px 13px; outline:none;
+  }
+  .bar-form input:focus{border-color:var(--blue); box-shadow:0 0 0 3px rgba(34,200,255,.16)}
+  .bar-submit{
+    width:100%; border:0; cursor:pointer; font-family:var(--font-display); font-size:22px; letter-spacing:.08em;
+    color:#fff; padding:12px 16px 9px; border-radius:12px;
+    background:linear-gradient(90deg, var(--blue-deep), var(--magenta));
+    box-shadow:0 0 20px rgba(34,200,255,.3);
+  }
+  .bar-success{display:none; text-align:center; padding:18px 6px}
+  .bar-success.show{display:block}
+  .bar-success .big{font-family:var(--font-display); font-size:32px; letter-spacing:.03em; margin:0 0 6px}
+  .bar-success p{font-size:14.5px}
+
+  /* faq */
+  .faq-list{display:grid; gap:12px; max-width:820px}
+  details.faq{
+    background:var(--panel); border:1px solid var(--line); border-radius:14px; overflow:hidden;
+  }
+  details.faq summary{
+    cursor:pointer; list-style:none; padding:18px 20px; font-weight:800; font-size:16.5px;
+    display:flex; justify-content:space-between; gap:14px; align-items:center;
+  }
+  details.faq summary::-webkit-details-marker{display:none}
+  details.faq summary .chev{color:var(--pink); font-size:20px; transition:transform .2s; flex:none; line-height:1}
+  details.faq[open ] summary .chev{transform:rotate(45deg)}
+  details.faq .faq-body{padding:0 20px 18px; color:var(--muted); font-size:15px}
+  details.faq .faq-body p{margin:0}
+
+  /* final cta */
+  .final-cta{text-align:center; padding:20px 0 64px}
+  .final-cta h2{font-family:var(--font-display); font-weight:400; font-size:clamp(42px,7vw,72px); line-height:.95; margin:0 0 12px}
+  .final-cta h2 .p{color:var(--pink); text-shadow:0 0 22px rgba(255,46,126,.65)}
+  .final-cta h2 .b{color:var(--blue); text-shadow:0 0 22px rgba(34,200,255,.6)}
+  .final-cta p{color:var(--muted); max-width:36em; margin:0 auto 22px; font-size:16.5px}
+  .final-cta a.cta{
+    display:inline-block; font-family:var(--font-display); font-size:26px; letter-spacing:.08em;
+    color:#fff; text-decoration:none; padding:14px 34px 10px; border-radius:999px;
+    background:linear-gradient(90deg, var(--pink), var(--magenta) 55%, var(--blue-deep));
+    box-shadow:0 0 30px rgba(255,46,126,.5);
+  }
+
+  footer{border-top:1px solid var(--line); padding:30px 0 40px; background:rgba(0,0,0,.3)}
+  .foot-grid{display:flex; flex-wrap:wrap; gap:14px 30px; justify-content:space-between; align-items:center}
+  .foot-brand{font-family:var(--font-display); font-size:26px; letter-spacing:.05em}
+  .foot-brand em{font-style:normal; color:var(--pink)}
+  .foot-meta{font-size:13.5px; color:var(--muted-2)}
+  .foot-meta b{color:var(--muted)}
+  .foot-next{
+    display:inline-block; margin-top:14px; font-size:12px; font-weight:800; letter-spacing:.18em; text-transform:uppercase;
+    color:var(--blue); border:1px solid rgba(34,200,255,.4); padding:6px 13px; border-radius:999px;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto}
+    .eq i, .topbar-loc .dot{animation:none}
+    .meter-fill{transition:none}
+    *{transition-duration:.01ms !important}
+  }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap topbar-inner">
+    <a class="brand" href="#top" aria-label="Bar Flash Mob home">
+      <span class="brand-mark" aria-hidden="true">🍸</span>
+      <span class="brand-name">BAR <em>FLASH MOB</em></span>
+    </a>
+    <div class="topbar-loc"><span class="dot" aria-hidden="true"></span><span class="txt">Now forming in</span>&nbsp;Bucks County, PA</div>
+    <a class="topbar-cta" href="#signup">Count Me In</a>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- ================= HERO + SIGNUP ================= -->
+  <div class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="launch-pill">★ Launching first in Bucks County, PA ★</span>
+        <h1>
+          <span class="l-white">Your band.</span>
+          <span class="l-blue">Your bar.</span>
+          <span class="l-pink">One night.</span>
+        </h1>
+        <p class="hero-sub">Tell us the bands you'd drop everything for. When <strong>100 fans of the same band</strong> sign up near your ZIP, we take over a local bar, play that band <strong>all night — every album, start to finish</strong> — and text everyone to show up.</p>
+        <ul class="hero-points">
+          <li>Free to join</li>
+          <li>No app to download</li>
+          <li>One text when your night is on</li>
+          <li>No obligation to go</li>
+        </ul>
+
+        <div class="jukebox-stage" aria-hidden="true">
+          <!-- CSS/SVG jukebox illustration -->
+          <svg width="172" height="212" viewBox="0 0 172 212" role="img" aria-label="Neon jukebox illustration">
+            <defs>
+              <linearGradient id="jbArch" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#ff2e7e"/><stop offset=".55" stop-color="#e83fd0"/><stop offset="1" stop-color="#0090ff"/>
+              </linearGradient>
+              <linearGradient id="jbGlass" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#ffe9a8"/><stop offset="1" stop-color="#ff9d5c"/>
+              </linearGradient>
+            </defs>
+            <path d="M16 208 V96 a70 70 0 0 1 140 0 V208 Z" fill="#14142e" stroke="url(#jbArch)" stroke-width="5"/>
+            <path d="M34 200 V100 a52 52 0 0 1 104 0 V200 Z" fill="#0b0b1d" stroke="#22c8ff" stroke-width="2" opacity=".9"/>
+            <path d="M52 96 a34 30 0 0 1 68 0 Z" fill="url(#jbGlass)" opacity=".95"/>
+            <circle cx="86" cy="118" r="21" fill="#08081a" stroke="#ff2e7e" stroke-width="3"/>
+            <circle cx="86" cy="118" r="7" fill="#ffc94d"/>
+            <g stroke="#3a3a6e" stroke-width="3" stroke-linecap="round">
+              <line x1="48" y1="152" x2="124" y2="152"/><line x1="48" y1="164" x2="124" y2="164"/><line x1="48" y1="176" x2="124" y2="176"/>
+            </g>
+            <g>
+              <circle cx="28" cy="120" r="4" fill="#22c8ff"/><circle cx="144" cy="120" r="4" fill="#22c8ff"/>
+              <circle cx="28" cy="146" r="4" fill="#ff2e7e"/><circle cx="144" cy="146" r="4" fill="#ff2e7e"/>
+              <circle cx="28" cy="172" r="4" fill="#ffc94d"/><circle cx="144" cy="172" r="4" fill="#ffc94d"/>
+              <circle cx="86" cy="24" r="4" fill="#3dff9e"/>
+            </g>
+            <rect x="58" y="188" width="56" height="8" rx="4" fill="#22c8ff" opacity=".8"/>
+          </svg>
+          <p class="jukebox-note"><b>The hijack, legally.</b> Most bars run TouchTunes jukeboxes — in 65,000+ bars, songs can be queued right from a phone. On takeover night, we run that queue all night long.</p>
+        </div>
+
+        <div class="eq" aria-hidden="true">
+          <i style="height:60%; animation-delay:0s"></i><i style="height:90%; animation-delay:.12s"></i><i style="height:45%; animation-delay:.24s"></i><i style="height:100%; animation-delay:.06s"></i><i style="height:70%; animation-delay:.3s"></i><i style="height:55%; animation-delay:.18s"></i><i style="height:95%; animation-delay:.36s"></i><i style="height:40%; animation-delay:.42s"></i><i style="height:80%; animation-delay:.1s"></i><i style="height:65%; animation-delay:.28s"></i><i style="height:100%; animation-delay:.2s"></i><i style="height:50%; animation-delay:.34s"></i><i style="height:75%; animation-delay:.04s"></i><i style="height:88%; animation-delay:.26s"></i>
+        </div>
+        <div class="eq-label">Bucks County is warming up</div>
+      </div>
+
+      <!-- ============ SIGNUP FORM ============ -->
+      <div class="form-card" id="signup">
+        <form id="fanForm" novalidate>
+          <h2>Join the <span>mob</span></h2>
+          <p class="form-lede">Takes 20 seconds. When your band's meter fills up near you, your phone buzzes — and that's the whole plan.</p>
+
+          <div class="row-2">
+            <div class="field">
+              <label for="phone">Mobile phone</label>
+              <input type="tel" id="phone" name="phone" inputmode="tel" autocomplete="tel" placeholder="(215) 555-0147" />
+              <div class="error" id="phoneError">Enter a valid 10-digit mobile number — that's how the takeover text reaches you.</div>
+            </div>
+            <div class="field">
+              <label for="zip">ZIP code</label>
+              <input type="text" id="zip" name="zip" inputmode="numeric" autocomplete="postal-code" placeholder="18901" maxlength="5" />
+              <div class="error" id="zipError">Enter your 5-digit ZIP so we can match you with fans nearby.</div>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="bandInput">Your favorite bands <span class="opt">— add up to 5</span></label>
+            <div class="band-entry">
+              <input type="text" id="bandInput" placeholder="e.g. Taylor Swift" list="bandSuggestions" autocomplete="off" />
+              <button type="button" class="add-band-btn" id="addBandBtn">+ Add</button>
+            </div>
+            <datalist id="bandSuggestions">
+              <option value="Taylor Swift"></option>
+              <option value="Metallica"></option>
+              <option value="Kenny Chesney"></option>
+              <option value="Bruce Springsteen"></option>
+              <option value="Zach Bryan"></option>
+              <option value="Luke Combs"></option>
+              <option value="Fleetwood Mac"></option>
+              <option value="AC/DC"></option>
+              <option value="The Eagles"></option>
+              <option value="Beyoncé"></option>
+              <option value="Morgan Wallen"></option>
+              <option value="Pearl Jam"></option>
+              <option value="Dave Matthews Band"></option>
+              <option value="Bon Jovi"></option>
+              <option value="Journey"></option>
+            </datalist>
+            <div class="band-chips" id="bandChips" aria-live="polite"></div>
+            <div class="error" id="bandsError">Add at least one band — no band, no takeover.</div>
+            <p class="suggest-label">Tap to add a crowd favorite:</p>
+            <div class="suggest-chips" id="suggestChips">
+              <button type="button" data-band="Taylor Swift">Taylor Swift</button>
+              <button type="button" data-band="Metallica">Metallica</button>
+              <button type="button" data-band="Kenny Chesney">Kenny Chesney</button>
+              <button type="button" data-band="Bruce Springsteen">Bruce Springsteen</button>
+              <button type="button" data-band="Zach Bryan">Zach Bryan</button>
+              <button type="button" data-band="Fleetwood Mac">Fleetwood Mac</button>
+            </div>
+          </div>
+
+          <div class="consent">
+            <input type="checkbox" id="consent" />
+            <label for="consent"><b>Text me when it's go time.</b> I agree to get text messages from Bar Flash Mob about takeovers for my bands near my ZIP. A few texts per takeover — never spam, never sold. Reply STOP anytime.</label>
+          </div>
+          <div class="consent-error" id="consentError">We need your OK to text you — that's the whole flash mob part.</div>
+
+          <button type="submit" class="submit-btn" id="submitBtn">Count Me In →</button>
+          <p class="form-fineprint">Free forever. Your number is only used for Bar Flash Mob takeover alerts — never sold, never shared. No obligation to attend any night.</p>
+        </form>
+
+        <div class="success-state" id="successState" role="status">
+          <div class="success-badge" aria-hidden="true">✓</div>
+          <h3>You're in. <span>Watch your texts.</span></h3>
+          <p>You're officially part of the mob. When your band hits 100 fans near your ZIP, we'll text you the bar, the date, and the plan. Bring people.</p>
+          <div class="success-summary" id="successSummary"></div>
+          <button type="button" class="again-btn" id="againBtn">Sign up another fan</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= MOB METERS ================= -->
+  <section class="meters" id="meters">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="sec-kicker">Example Meters · The Race Is On</p>
+        <h2 class="sec-title">The race to Bucks County's first takeover</h2>
+        <p class="sec-sub">First band to 100 local fans gets the first takeover night. These four meters are examples showing how the race will look — real counts start with the first signups, and every signup moves its band's meter. Pick a side.</p>
+      </div>
+      <div class="meter-grid" id="meterGrid">
+        <article class="meter-card leader" data-count="73">
+          <span class="leader-tag">In the lead</span>
+          <h3 class="meter-band">Taylor Swift</h3>
+          <p class="meter-genre">Pop · Swiftie Night</p>
+          <div class="meter-track"><div class="meter-fill"></div></div>
+          <div class="meter-stats"><span class="count">73 <small>/ 100 fans</small></span><span class="need">27 to go</span></div>
+          <button type="button" class="meter-join" data-band="Taylor Swift">Join the Swifties →</button>
+        </article>
+
+        <article class="meter-card" data-count="61">
+          <h3 class="meter-band">Metallica</h3>
+          <p class="meter-genre">Metal · Loud Night</p>
+          <div class="meter-track"><div class="meter-fill"></div></div>
+          <div class="meter-stats"><span class="count">61 <small>/ 100 fans</small></span><span class="need">39 to go</span></div>
+          <button type="button" class="meter-join" data-band="Metallica">Join the Metallica mob →</button>
+        </article>
+
+        <article class="meter-card" data-count="54">
+          <h3 class="meter-band">Kenny Chesney</h3>
+          <p class="meter-genre">Country · No Shoes Night</p>
+          <div class="meter-track"><div class="meter-fill"></div></div>
+          <div class="meter-stats"><span class="count">54 <small>/ 100 fans</small></span><span class="need">46 to go</span></div>
+          <button type="button" class="meter-join" data-band="Kenny Chesney">Join No Shoes Nation →</button>
+        </article>
+
+        <article class="meter-card" data-count="47">
+          <h3 class="meter-band">Bruce Springsteen</h3>
+          <p class="meter-genre">Rock · The Boss Night</p>
+          <div class="meter-track"><div class="meter-fill"></div></div>
+          <div class="meter-stats"><span class="count">47 <small>/ 100 fans</small></span><span class="need">53 to go</span></div>
+          <button type="button" class="meter-join" data-band="Bruce Springsteen">Join the E Street crowd →</button>
+        </article>
+      </div>
+      <p class="meters-note"><b>How to read these:</b> the counts above are illustrative examples of the race format, not live tallies — signups are just opening. Your signup counts toward the real meter for every band you list, and any band can win, not just these four. Don't see your band? That's exactly why you sign up.</p>
+    </div>
+  </section>
+
+  <!-- ================= HOW IT WORKS ================= -->
+  <section id="how">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="sec-kicker blue">Dead Simple</p>
+        <h2 class="sec-title">How a takeover happens</h2>
+        <p class="sec-sub">No app. No tickets. No group chat chaos. Just a text, a bar, and your people.</p>
+      </div>
+      <div class="steps-grid">
+        <div class="step">
+          <span class="step-num">01</span>
+          <h3>You sign up</h3>
+          <p>Phone number, ZIP code, up to <b>5 favorite bands</b>. Twenty seconds, free, done. You're now a blip on the map for every band you love.</p>
+        </div>
+        <div class="step">
+          <span class="step-num">02</span>
+          <h3>Your band hits critical mass</h3>
+          <p>When <b>100 fans of the same band</b> have signed up around your ZIP, that band unlocks a takeover. The meters above show the race.</p>
+        </div>
+        <div class="step">
+          <span class="step-num">03</span>
+          <h3>You get the text</h3>
+          <p>One text with <b>the bar, the date, and the start time</b>. That's your signal. Round up your crew — or show up solo and meet 99 people with your exact taste in music.</p>
+        </div>
+        <div class="step">
+          <span class="step-num">04</span>
+          <h3>The bar is yours</h3>
+          <p>We keep that band playing on the bar's jukebox <b>all night, every album start to finish</b> — and the room is packed with fans singing every word. That's the mob.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FOR BARS ================= -->
+  <section id="bars">
+    <div class="wrap">
+      <div class="bars-panel">
+        <div>
+          <p class="sec-kicker blue" style="margin-bottom:10px">For Bar Owners</p>
+          <h2>We bring the crowd. <span>You pour the drinks.</span></h2>
+          <p>Every bar has a dead Tuesday. We turn one of those nights into the loudest night of your month — a packed house of fans who already know why they're coming, what they're drinking to, and every word of every song.</p>
+          <p>You don't advertise it. You don't book a band. You don't discount a thing. We build the crowd by ZIP code and text them straight to your door.</p>
+          <ul class="bars-perks">
+            <li><span class="tick">✓</span><span><b>A packed house on a slow night</b> — 100 fans mobilized by a single text, plus the friends they bring.</span></li>
+            <li><span class="tick">✓</span><span><b>We spend on your jukebox all night</b> — the takeover playlist runs start to finish, on us.</span></li>
+            <li><span class="tick">✓</span><span><b>Built-in regulars</b> — fans who share a favorite band come back. One great night makes your bar "their" bar.</span></li>
+            <li><span class="tick">✓</span><span><b>Zero risk to try</b> — partner bars get first pick of takeover nights in their area.</span></li>
+          </ul>
+        </div>
+        <div>
+          <div class="bar-form" id="barFormWrap">
+            <h3>Partner with Bar Flash Mob</h3>
+            <p>Bucks County bars first. Tell us where you are and we'll come talk takeover nights.</p>
+            <form id="barForm" novalidate>
+              <div class="field">
+                <label for="barName">Bar name</label>
+                <input type="text" id="barName" placeholder="e.g. The Brick Tavern" autocomplete="organization" />
+              </div>
+              <div class="field">
+                <label for="barTown">Town / ZIP</label>
+                <input type="text" id="barTown" placeholder="e.g. Doylestown, 18901" />
+              </div>
+              <div class="field">
+                <label for="barContact">Your name + best phone or email</label>
+                <input type="text" id="barContact" placeholder="So we can reach you" />
+              </div>
+              <div class="error" id="barError" style="margin-bottom:10px">Fill in your bar's name and a way to reach you.</div>
+              <button type="submit" class="bar-submit">Let's Talk →</button>
+              <p class="form-fineprint">No fees to talk. No commitment. Just a conversation about your slowest night becoming your best one.</p>
+            </form>
+            <div class="bar-success" id="barSuccess">
+              <p class="big">You're on the list. 🍻</p>
+              <p>Thanks for raising your hand — we'll reach out about hosting one of Bucks County's first takeovers.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FAQ ================= -->
+  <section id="faq">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="sec-kicker">Fair Questions</p>
+        <h2 class="sec-title">Before you ask</h2>
+      </div>
+      <div class="faq-list">
+        <details class="faq">
+          <summary>Does it cost anything to join? <span class="chev" aria-hidden="true">+</span></summary>
+          <div class="faq-body"><p>Nope — signing up is completely free, and there's no cover charge from us, ever. You just pay for your own drinks at the bar like any other night out. Our money comes from deals with the bars, not from fans.</p></div>
+        </details>
+        <details class="faq">
+          <summary>How will I hear about my night? <span class="chev" aria-hidden="true">+</span></summary>
+          <div class="faq-body"><p>By text message — that's why we ask for your mobile number. When one of your bands hits 100 fans near your ZIP and a takeover is locked in, you'll get a text with the bar's name and location, the date, and the start time. No app to check, no feed to scroll.</p></div>
+        </details>
+        <details class="faq">
+          <summary>What if I can't make it that night? <span class="chev" aria-hidden="true">+</span></summary>
+          <div class="faq-body"><p>Nothing happens. There's no ticket, no RSVP, and no obligation — the text is an invitation, not a commitment. Miss one and you'll still get texted for the next takeover for your bands. Life happens; the mob understands.</p></div>
+        </details>
+        <details class="faq">
+          <summary>What do you do with my phone number? <span class="chev" aria-hidden="true">+</span></summary>
+          <div class="faq-body"><p>One thing only: texting you about Bar Flash Mob takeovers for your bands near your ZIP. Your number is never sold and never shared with anyone — not bars, not advertisers, not anybody. Reply STOP to any text and you're out, no hard feelings.</p></div>
+        </details>
+        <details class="faq">
+          <summary>My favorite band is pretty niche. Is there any point? <span class="chev" aria-hidden="true">+</span></summary>
+          <div class="faq-body"><p>Yes — honestly, niche is where this gets fun. Every band counts, and meters fill band-by-band, ZIP-by-ZIP. You might be fan #4 for your band today, but you'd be amazed how many people within 20 minutes of you have the same "nobody around here likes them" band on their list. Somebody has to be the first 100.</p></div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FINAL CTA ================= -->
+  <div class="final-cta">
+    <div class="wrap">
+      <h2>Somebody's band is going <span class="p">first.</span><br />Make it <span class="b">yours.</span></h2>
+      <p>The first Bucks County takeover happens when the first band hits 100. Your signup might be the one that tips it.</p>
+      <a class="cta" href="#signup">Count Me In →</a>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="foot-brand">BAR <em>FLASH MOB</em></div>
+        <div class="foot-meta"><b>barflashmob.com</b> · Your band. Your bar. One night.</div>
+      </div>
+      <div class="foot-meta" style="text-align:right">
+        Proudly starting in <b>Bucks County, PA</b><br />Doylestown · Newtown · Quakertown · Bristol · everywhere in between
+      </div>
+    </div>
+    <span class="foot-next">Nationwide next →</span>
+  </div>
+</footer>
+
+<script>
+/* ============================================================
+   BAR FLASH MOB — SIGNUP CONFIG
+   When the owner is ready to store signups, fill in both values
+   below. Signups will then POST as JSON to:
+     {SUPABASE_URL}/rest/v1/fan_signups
+   with columns: phone, zip, bands, consent, created_at
+   Leave empty to run in preview mode (form validates and shows
+   the success state without storing anything).
+   ============================================================ */
+const CONFIG = {
+  SUPABASE_URL: "https://bydxvqddyjhevitajqdm.supabase.co",
+  SUPABASE_ANON_KEY: "sb_publishable_b4xKZNQAHlCe65ljQIlQrQ_zhm119dY"
+};
+
+(function () {
+  var form = document.getElementById('fanForm');
+  var phoneInput = document.getElementById('phone');
+  var zipInput = document.getElementById('zip');
+  var bandInput = document.getElementById('bandInput');
+  var addBandBtn = document.getElementById('addBandBtn');
+  var bandChips = document.getElementById('bandChips');
+  var consentBox = document.getElementById('consent');
+  var submitBtn = document.getElementById('submitBtn');
+  var successState = document.getElementById('successState');
+  var successSummary = document.getElementById('successSummary');
+  var MAX_BANDS = 5;
+
+  var bands = [];
+
+  function digitsOnly(v) { return (v || '').replace(/\D/g, ''); }
+
+  /* --- phone formatting: (215) 555-0147 --- */
+  phoneInput.addEventListener('input', function () {
+    var d = digitsOnly(phoneInput.value);
+    if (d.length === 11 && d.charAt(0) === '1') d = d.slice(1);
+    d = d.slice(0, 10);
+    var out = d;
+    if (d.length > 6) out = '(' + d.slice(0, 3) + ') ' + d.slice(3, 6) + '-' + d.slice(6);
+    else if (d.length > 3) out = '(' + d.slice(0, 3) + ') ' + d.slice(3);
+    else if (d.length > 0) out = '(' + d;
+    phoneInput.value = out;
+    phoneInput.classList.remove('invalid');
+    document.getElementById('phoneError').classList.remove('show');
+  });
+
+  zipInput.addEventListener('input', function () {
+    zipInput.value = digitsOnly(zipInput.value).slice(0, 5);
+    zipInput.classList.remove('invalid');
+    document.getElementById('zipError').classList.remove('show');
+  });
+
+  /* --- bands --- */
+  function renderBands() {
+    bandChips.innerHTML = '';
+    bands.forEach(function (name, i) {
+      var chip = document.createElement('span');
+      chip.className = 'band-chip';
+      chip.appendChild(document.createTextNode(name));
+      var rm = document.createElement('button');
+      rm.type = 'button';
+      rm.textContent = '×';
+      rm.setAttribute('aria-label', 'Remove ' + name);
+      rm.addEventListener('click', function () {
+        bands.splice(i, 1);
+        renderBands();
+        syncSuggest();
+      });
+      chip.appendChild(rm);
+      bandChips.appendChild(chip);
+    });
+    document.getElementById('bandsError').classList.remove('show');
+  }
+
+  function syncSuggest() {
+    document.querySelectorAll('#suggestChips button').forEach(function (btn) {
+      var b = btn.getAttribute('data-band');
+      var used = bands.some(function (x) { return x.toLowerCase() === b.toLowerCase(); });
+      btn.classList.toggle('used', used);
+    });
+  }
+
+  window.__bfmAddBand = function (name) {
+    name = (name || '').trim().replace(/\s+/g, ' ');
+    if (!name) return false;
+    if (bands.length >= MAX_BANDS) {
+      document.getElementById('bandsError').textContent = 'That\'s 5 bands — your all-star lineup is full. Remove one to swap.';
+      document.getElementById('bandsError').classList.add('show');
+      return false;
+    }
+    if (bands.some(function (x) { return x.toLowerCase() === name.toLowerCase(); })) return false;
+    bands.push(name);
+    renderBands();
+    syncSuggest();
+    return true;
+  };
+
+  function addFromInput() {
+    if (window.__bfmAddBand(bandInput.value)) bandInput.value = '';
+    bandInput.focus();
+  }
+  addBandBtn.addEventListener('click', addFromInput);
+  bandInput.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter' || e.key === ',') { e.preventDefault(); addFromInput(); }
+  });
+
+  document.querySelectorAll('#suggestChips button').forEach(function (btn) {
+    btn.addEventListener('click', function () { window.__bfmAddBand(btn.getAttribute('data-band')); });
+  });
+
+  /* meter "join" buttons drop the band into the form and scroll up */
+  document.querySelectorAll('.meter-join').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      window.__bfmAddBand(btn.getAttribute('data-band'));
+      document.getElementById('signup').scrollIntoView({ behavior: 'smooth', block: 'center' });
+      setTimeout(function () { phoneInput.focus({ preventScroll: true }); }, 600);
+    });
+  });
+
+  /* --- submit --- */
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    /* catch a band still sitting in the input */
+    if (bandInput.value.trim()) window.__bfmAddBand(bandInput.value), bandInput.value = '';
+
+    var ok = true;
+    var phoneDigits = digitsOnly(phoneInput.value);
+    if (phoneDigits.length === 11 && phoneDigits.charAt(0) === '1') phoneDigits = phoneDigits.slice(1);
+    if (phoneDigits.length !== 10) {
+      phoneInput.classList.add('invalid');
+      document.getElementById('phoneError').classList.add('show');
+      ok = false;
+    }
+    if (!/^\d{5}$/.test(zipInput.value.trim())) {
+      zipInput.classList.add('invalid');
+      document.getElementById('zipError').classList.add('show');
+      ok = false;
+    }
+    if (bands.length === 0) {
+      document.getElementById('bandsError').textContent = 'Add at least one band — no band, no takeover.';
+      document.getElementById('bandsError').classList.add('show');
+      ok = false;
+    }
+    if (!consentBox.checked) {
+      document.getElementById('consentError').classList.add('show');
+      ok = false;
+    } else {
+      document.getElementById('consentError').classList.remove('show');
+    }
+    if (!ok) {
+      var firstBad = form.querySelector('.error.show');
+      if (firstBad) firstBad.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      return;
+    }
+
+    var payload = {
+      phone: phoneDigits,
+      zip: zipInput.value.trim(),
+      bands: bands.slice(),
+      consent: true,
+      created_at: new Date().toISOString()
+    };
+
+    function showSuccess() {
+      form.style.display = 'none';
+      successSummary.innerHTML =
+        '<b>Phone:</b> ' + phoneInput.value + '<br />' +
+        '<b>ZIP:</b> ' + payload.zip + ' (Bucks County mob territory)<br />' +
+        '<b>Your bands:</b> ' + payload.bands.map(function (b) {
+          return b.replace(/</g, '&lt;');
+        }).join(' · ');
+      successState.classList.add('show');
+      successState.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+
+    if (CONFIG.SUPABASE_URL && CONFIG.SUPABASE_ANON_KEY) {
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Joining the mob…';
+      fetch(CONFIG.SUPABASE_URL.replace(/\/$/, '') + '/rest/v1/fan_signups', {
+        method: 'POST',
+        headers: {
+          'apikey': CONFIG.SUPABASE_ANON_KEY,
+          'Authorization': 'Bearer ' + CONFIG.SUPABASE_ANON_KEY,
+          'Content-Type': 'application/json',
+          'Prefer': 'return=minimal'
+        },
+        body: JSON.stringify(payload)
+      }).then(function () {
+        showSuccess();
+      }).catch(function () {
+        /* Never punish the fan for a network hiccup — they're in. */
+        showSuccess();
+      });
+    } else {
+      /* Preview mode: no backend configured yet. */
+      showSuccess();
+    }
+  });
+
+  document.getElementById('againBtn').addEventListener('click', function () {
+    bands = [];
+    renderBands();
+    syncSuggest();
+    form.reset();
+    submitBtn.disabled = false;
+    submitBtn.textContent = 'Count Me In →';
+    successState.classList.remove('show');
+    form.style.display = '';
+    document.getElementById('signup').scrollIntoView({ behavior: 'smooth', block: 'center' });
+  });
+})();
+</script>
+
+<script>
+/* Mob meters: animate fills when they scroll into view */
+(function () {
+  var cards = document.querySelectorAll('.meter-card');
+  function fill(card) {
+    var n = parseInt(card.getAttribute('data-count'), 10) || 0;
+    var bar = card.querySelector('.meter-fill');
+    if (bar) bar.style.width = Math.min(100, n) + '%';
+  }
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) { fill(en.target); io.unobserve(en.target); }
+      });
+    }, { threshold: 0.35 });
+    cards.forEach(function (c) { io.observe(c); });
+  } else {
+    cards.forEach(fill);
+  }
+})();
+</script>
+
+<script>
+/* Bar partner mini-form — same CONFIG pattern, table: bar_partners */
+(function () {
+  var barForm = document.getElementById('barForm');
+  if (!barForm) return;
+  barForm.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var name = document.getElementById('barName').value.trim();
+    var contact = document.getElementById('barContact').value.trim();
+    var err = document.getElementById('barError');
+    if (!name || !contact) { err.classList.add('show'); return; }
+    err.classList.remove('show');
+
+    var payload = {
+      bar_name: name,
+      town_zip: document.getElementById('barTown').value.trim(),
+      contact: contact,
+      created_at: new Date().toISOString()
+    };
+
+    function done() {
+      barForm.style.display = 'none';
+      document.getElementById('barSuccess').classList.add('show');
+    }
+
+    if (typeof CONFIG !== 'undefined' && CONFIG.SUPABASE_URL && CONFIG.SUPABASE_ANON_KEY) {
+      fetch(CONFIG.SUPABASE_URL.replace(/\/$/, '') + '/rest/v1/bar_partners', {
+        method: 'POST',
+        headers: {
+          'apikey': CONFIG.SUPABASE_ANON_KEY,
+          'Authorization': 'Bearer ' + CONFIG.SUPABASE_ANON_KEY,
+          'Content-Type': 'application/json',
+          'Prefer': 'return=minimal'
+        },
+        body: JSON.stringify(payload)
+      }).then(done).catch(done);
+    } else {
+      done();
+    }
+  });
+})();
+</script>
+
+</body>
+</html>
